@@ -1,0 +1,72 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Include Web3 script -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.6/dist/web3.min.js"></script>
+
+    <script>
+    // Your JavaScript code using Web3
+    var provider = "https://mainnet.infura.io/v3/d8ef4f2e5b734a2c97c0d7d400d6c2df";
+    var APIKey = 'd8ef4f2e5b734a2c97c0d7d400d6c2df';
+    var web3Provider = new Web3.providers.HttpProvider(provider);
+    var web3 = new Web3(web3Provider);
+    </script>    
+
+    <!-- CSS STYLES -->
+    <link rel="stylesheet" href="index.css" />
+    <title>Xmas</title>
+</head>
+<body>
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <h1>Xmas Token - Buy 1 Win 1000</h1>
+    </div>
+
+    <!-- DASHBOARD SECTION -->
+    <section class="dashboard-section">
+    	<img src="icon.png">
+        <h3 class="total-supply-heading">
+            Xmas Total Supply :
+            <span class="total-supply"></span>
+        </h3>
+        <br><br>
+        <p>_______________________________________________________</p>
+        <br><br>
+        <h3 class="loto-pool-heading">
+            ## Maximum Bonus :
+            <span class="loto-pool"></span>
+        </h3>
+        <h3 class="loto-player-heading">
+            ## Current Players :
+            <span class="loto-player"></span>
+        </h3>
+        <h3 class="loto-winner-heading">
+            ## The Latest Winner :
+            <span class="loto-winner"></span>
+        </h3>
+        <br>
+        <p>Example : Buy 1M Win 1000M</p>
+        <p>## ( 0.01%) Winner: get 1000M Xms</p>
+        <p>## (99.99%) get 0.9M and Maximum Bonus increase 0.1M</p>
+        <br>
+    </section>
+
+    <!-- Copyright Section -->
+    <div class="copyright-section">
+        <p>&copy; 2023 Xmas Token. All rights reserved. ## NFT ## GameFi</p>
+    </div>
+
+    <!-- Additional Link Section -->
+    <div class="additional-link-section">
+        <p>Swap on <a href="https://app.uniswap.org/swap?outputCurrency=0x7784c45ec594575256095c8bb6d3c4e8c831a107" target="_blank">Uniswap V3</a>.
+        Link on <a href="https://etherscan.io/token/0x7784c45Ec594575256095C8Bb6d3c4E8C831a107" target="_blank">Etherscan.io</a></p>
+    </div>
+</body>
+<!-- SCRIPT -->
+<script src="./index.js"></script>
+</html>
