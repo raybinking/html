@@ -3,23 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page</title>
+    <title>NFT Mint</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(to bottom right, #FFC0CB, #87CEFA);
+            background: linear-gradient(to bottom right, #B0E0E6, #87CEEB);
             color: #fff;
-            font-size: 24px;
             font-family: 'Arial', sans-serif;
+        }
+
+        #welcome {
+            margin-top: 20px;
+            font-size: 36px;
+        }
+
+        #icons {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            background: #4682B4;
+            margin: 0 3px;
+            border-radius: 50%;
+        }
+
+        #buttons {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background: #4682B4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
-    <div>NFT  coming soon ...</div>
+    <div id="welcome">NFT Mint</div>
+
+    <div id="icons">
+        <!-- Icon 1 -->
+        <img src="icon1.gif">
+        <!-- Icon 2 -->
+        <img src="icon2.gif">
+        <!-- Icon 3 -->
+        <img src="icon3.gif">
+        <!-- Icon 4 -->
+        <img src="icon4.gif">
+        <!-- Icon 5 -->
+        <img src="icon5.gif">
+    </div>
+
+    <div id="buttons">
+        <button class="button">Mint 1 (10x Xmas)</button>
+        <button class="button">Mint 3 (25x Xmas)</button>
+        <button class="button">Mint 5 (40x Xmas)</button>
+    </div>
 </body>
 </html>
