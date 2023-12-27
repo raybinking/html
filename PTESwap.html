@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PTESwap</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(45deg, #ff99cc, #99ccff, #ffd699);
+      color: #333;
+    }
+
+    .content {
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #ff66b2;
+    }
+
+    p {
+      margin: 20px 0;
+    }
+
+    .metamask-button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      outline: none;
+      padding: 0;
+    }
+
+    .metamask-logo {
+      width: 100px;
+      height: auto;
+    }
+
+    .welcome-screen {
+      display: none;
+      background: #ffccf2;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="content">
+  <div>
+    <h1>Welcome to PTESwap!</h1>
+  </div>
+  <div>
+    <button class="metamask-button" onclick="showWelcomeScreen()">
+      <img src="metamask-logo.png" alt="MetaMask Logo" class="metamask-logo">
+    </button>
+    <div class="welcome-screen" id="welcomeScreen">
+      <h2>Welcome!</h2>
+      <p>Here is play to earn swapping.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showWelcomeScreen() {
+    document.querySelector('.metamask-button').style.display = 'none';
+    document.getElementById('welcomeScreen').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
