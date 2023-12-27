@@ -49,21 +49,11 @@ window.onload = async (event) => {
 // function to show dashboard
 //================================
 const showUserDashboard = async () => {
-    get_totalSupply();
     get_liquidity();
     get_lotoPool();
     get_lotoPlayer();
     get_lotoWinner();
 };
-
-// get total supply
-const get_totalSupply = async () => {
-	Xmas_totalSupply = await contract.methods.totalSupply().call();
-	Xmas_totalSupply -= Xmas_totalSupply % 100000000;
-	Xmas_totalSupply = Xmas_totalSupply / 100000000;
-    Xmas_totalSupply = Number(Xmas_totalSupply).toString();
-    document.querySelector(".total-supply").innerHTML = Xmas_totalSupply;
-}
 
 // get liquidity
 const get_liquidity = async () => {
@@ -97,7 +87,7 @@ const get_lotoWinner = async () => {
 	Xmas_Address0 = "0x0000000000000000000000000000000000000000";
 	Xmas_lotoWinner = await contract.methods.lotoWinner().call();
 	if (Xmas_lotoWinner == Xmas_Address0) {
-	    document.querySelector(".loto-winner").innerHTML = Xmas_lotoWinner;
+	    document.querySelector(".loto-winner").innerHTML = 0;
 	}
 	else {
         document.querySelector(".loto-winner").innerHTML = Xmas_lotoWinner;
