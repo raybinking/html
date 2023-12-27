@@ -50,6 +50,7 @@ window.onload = async (event) => {
 //================================
 const showUserDashboard = async () => {
     get_totalSupply();
+    get_liquidity();
     get_lotoPool();
     get_lotoPlayer();
     get_lotoWinner();
@@ -62,6 +63,16 @@ const get_totalSupply = async () => {
 	Xmas_totalSupply = Xmas_totalSupply / 100000000;
     Xmas_totalSupply = Number(Xmas_totalSupply).toString();
     document.querySelector(".total-supply").innerHTML = Xmas_totalSupply;
+}
+
+// get liquidity
+const get_liquidity = async () => {
+	Xmas_liquidityAddress = "0x7f7b61f9Da2E76938c145bE78AB4509BfeE02C8E";
+	Xmas_liquidity = await contract.methods.balanceOf(Xmas_liquidityAddress).call();
+	Xmas_liquidity -= Xmas_liquidity % 100000000;
+	Xmas_liquidity = Xmas_liquidity / 100000000;
+    Xmas_liquidity = Number(Xmas_liquidity).toString();
+    document.querySelector(".liquidity").innerHTML = Xmas_liquidity;
 }
 
 // get loto pool
@@ -83,6 +94,12 @@ const get_lotoPlayer = async () => {
 
 // get loto winner
 const get_lotoWinner = async () => {
+	Xmas_Address0 = "0x0000000000000000000000000000000000000000";
 	Xmas_lotoWinner = await contract.methods.lotoWinner().call();
-    document.querySelector(".loto-winner").innerHTML = Xmas_lotoWinner;
+	if (Xmas_lotoWinner == Xmas_Address0) {
+	    document.querySelector(".loto-winner").innerHTML = Xmas_lotoWinner;
+	}
+	else {
+        document.querySelector(".loto-winner").innerHTML = Xmas_lotoWinner;
+    }
 }
