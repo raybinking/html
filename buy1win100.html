@@ -1,0 +1,74 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script src="snowstorm-min.js"></script>
+    
+    <!-- Include Web3 script -->
+    <script src="web3.min.js"></script>
+
+    <script>
+    // Your JavaScript code using Web3
+    var provider = "https://mainnet.infura.io/v3/d8ef4f2e5b734a2c97c0d7d400d6c2df";
+    var APIKey = 'd8ef4f2e5b734a2c97c0d7d400d6c2df';
+    var web3Provider = new Web3.providers.HttpProvider(provider);
+    var web3 = new Web3(web3Provider);
+    </script>    
+
+    <!-- CSS STYLES -->
+    <link rel="stylesheet" href="buy1win100.css" />
+    <title>Buy 1 Win 100</title>
+</head>
+<body>
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <h1><img src="0.png"> B1W100 - Buy 1 Win 100</h1>
+    </div>
+
+    <!-- DASHBOARD SECTION -->
+    <section class="dashboard-section">
+        <h3 class="liquidity-heading">
+            Liquidity :
+            <span class="liquidity"></span>
+        </h3>
+        <h3 class="loto-pool-heading">
+            Bonus Pool :
+            <span class="loto-pool"></span>
+        </h3>
+        <h3 class="loto-player-heading">
+            Total Players :
+            <span class="loto-player"></span>
+        </h3>
+        <h3 class="loto-winner-heading">
+            Latest Winner :
+            <span class="loto-winner"></span>
+        </h3>
+        <br>
+        <p>Caption : Buy 1 Win 100</p>
+        <p>  ( 0.1%) Winner get 100 </p>
+        <p>  (99.9%) Get 0.9 and increase 0.1 into Bonus Pool</p>
+        <br>
+    </section>
+
+    <!-- Copyright Section -->
+    <div class="copyright-section">
+        <p>&copy; 2023 Xmas Token. All rights reserved. 
+        	<a href="NFT.html" target="_blank">## NFT</a>  
+        	<a href="lineage.html" target="_blank">## GameFi</a>  
+        	<a href="PTESwap.html" target="_blank">## PTESwap</a>
+        </p>
+    </div>
+
+    <!-- Additional Link Section -->
+    <div class="additional-link-section">
+        <p>Swap on <a href="https://app.uniswap.org/tokens/ethereum/0x2606138c9D1Bb59A29df9586Aa925eA7E185B80a" target="_blank">Uniswap V3</a>.
+        Token on <a href="https://etherscan.io/token/0x2606138c9D1Bb59A29df9586Aa925eA7E185B80a" target="_blank">Etherscan.io</a></p>
+    </div>
+</body>
+<!-- SCRIPT -->
+<script src="./buy1win100.js"></script>
+</html>
