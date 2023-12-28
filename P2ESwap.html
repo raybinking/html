@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Web3.js LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Web3.js LIBRARY -->
+    <script language="javascript" type="text/javascript" src="web3.min.js"
+    ></script>
+  <title>P2ESwap</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(45deg, #ff99cc, #99ccff, #ffd699);
+      color: #333;
+    }
+
+    .content {
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #ff66b2;
+    }
+
+    p {
+      margin: 20px 0;
+    }
+
+    .metamask-button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      outline: none;
+      padding: 0;
+    }
+
+    .metamask-logo {
+      width: 100px;
+      height: auto;
+    }
+    
+.login-section {
+  display: flex;
+  flex-direction: column;
+}    
+
+.dashboard-section {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+    
+    .wallet-balance-heading,
+    .Xmas-balance-heading  {
+      color: white;
+      letter-spacing: 1.5px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    
+    .wallet-balance,
+    .Xmas-balance {
+      color: #feba35;
+      letter-spacing: normal;
+      display: block;
+      margin-top: 1rem;
+      background: #000;
+      padding: 8px;
+      border-radius: 19px;
+    }
+  </style>
+</head>
+<body>
+
+    <section class="login-section">
+    	<h1>Welcome to P2ESwap!</h1>
+    <button class="metamask-button" onclick="loginWithEth()">
+      <img src="metamask-logo.png" alt="MetaMask Logo" class="metamask-logo">
+    </button>
+    </section>
+    
+    <section class="dashboard-section">
+      <h3 class="wallet-balance-heading">
+        ETH 
+        <span class="wallet-balance"></span>
+      </h3>
+      <h3 class="Xmas-balance-heading">
+        Xmas 
+        <span class="Xmas-balance"></span>
+      </h3>
+    </section>
+
+<script>
+	
+// Create global userWalletAddress variable
+window.userWalletAddress = null;
+
+// when the browser is ready
+window.onload = async (event) => {
+  // check if ethereum extension is installed
+  if (window.ethereum) {
+    // create web3 instance
+    window.web3 = new Web3(window.ethereum);
+	
+    //==========================================================
+    
+	// contract address
+    Xmas_address = "0x7784c45Ec594575256095C8Bb6d3c4E8C831a107";
+	// abi
+    Xmas_abi = [
+        {"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},
+        {"constant":false,"inputs":[{"name":"_spender","type":"address"},
+    	{"name":"_value","type":"uint256"}],"name":"approve","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},
+    	{"constant":true,"inputs":[],"name":"initialized","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},
+    	{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"lotoSetting","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"_totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"lotoRandomNo","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"address"}],"name":"allowed","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"lotoPool","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"lotoWinner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[{"name":"who","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"lotoCountDown","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"lotoRate","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},
+    	{"constant":true,"inputs":[],"name":"lotoAdds","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},
+    	{"constant":true,"inputs":[],"name":"lotoPlayerNo","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
+    	{"inputs":[{"name":"_initialSupply","type":"uint256"},{"name":"_name","type":"string"},{"name":"_symbol","type":"string"},
+    	{"name":"_decimals","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":true,"name":"spender","type":"address"},
+    	{"indexed":false,"name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},
+    	{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"}
+    ];    
+    
+    if (web3.eth.Contract) {
+      // create contract instance
+      //contract = new Contract(web3.eth.Contract);
+      contract = new web3.eth.Contract(Xmas_abi, Xmas_address);
+    } else {
+      // prompt user to check contract instance
+      alert("Please check contract instance");
+    }
+	
+	//==========================================================
+	
+  } else {
+    // prompt user to install Metamask
+    alert("Please install MetaMask or any Ethereum Extension Wallet");
+  }
+
+  // check if user is already logged in and update the global userWalletAddress variable
+  window.userWalletAddress = window.localStorage.getItem("userWalletAddress");
+
+  // show the user dashboard
+  showUserDashboard();
+};
+
+// Web3 login function
+const loginWithEth = async () => {
+  // check if there is global window.web3 instance
+  if (window.web3) {
+    try {
+      // get the user's ethereum account - prompts metamask to login
+      const selectedAccount = await window.ethereum
+        .request({
+          method: "eth_requestAccounts",
+        })
+        .then((accounts) => accounts[0])
+        .catch(() => {
+          // if the user cancels the login prompt
+          throw Error("Please select an account");
+        });
+
+      // set the global userWalletAddress variable to selected account
+      window.userWalletAddress = selectedAccount;
+
+      // store the user's wallet address in local storage
+      window.localStorage.setItem("userWalletAddress", selectedAccount);
+
+      // show the user dashboard
+      showUserDashboard();      
+    } catch (error) {
+      alert(error);
+    }
+  } else {
+    alert("wallet not found");
+  }
+};	
+
+// get the user's wallet balance
+const getWalletBalance = async () => {
+  
+  // check if there is global userWalletAddress variable
+  if (!window.userWalletAddress) {
+    return false;
+  }
+  
+  //
+  walletBalance = await window.ethereum.request({
+    method: "eth_getBalance",
+    params: [window.userWalletAddress, "latest"]
+  });
+  //walletBalance -= walletBalance % 10000000000;
+  walletBalance = Number(walletBalance).toString();
+  walletBalance = web3.utils.fromWei(walletBalance);
+
+  // convert the balance to ether
+  document.querySelector(".wallet-balance").innerHTML = walletBalance;
+};
+
+const getXmasBalance = async () => {  
+  // check if there is global userWalletAddress variable
+  if (!window.userWalletAddress) {
+    return false;
+  }
+  
+  //
+  XmasBalance = await contract.methods.balanceOf(window.userWalletAddress).call();
+  XmasBalance /= 100000000;
+  XmasBalance = Number(XmasBalance).toString();
+
+  // convert the balance to ether
+  document.querySelector(".Xmas-balance").innerHTML = XmasBalance;    
+}
+
+  const showUserDashboard = async() => {
+  	  // if the user is not logged in - userWalletAddress is null
+  if (!window.userWalletAddress) {
+    document.querySelector('.login-section').style.display = "flex";
+    document.querySelector(".dashboard-section").style.display = "none";
+  }
+  else {
+  	document.querySelector('.login-section').style.display = 'none';
+    document.querySelector(".dashboard-section").style.display = "flex";
+  	getWalletBalance();
+  	getXmasBalance();
+  }
+  }
+</script>
+
+</body>
+</html>
