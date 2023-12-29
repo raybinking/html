@@ -109,6 +109,7 @@
 window.userWalletAddress = null;
 
 window.onclose = async (event) => {
+	window.localStorage.removeItem("userWalletAddress");
 	window.userWalletAddress = null;
 	window.web3 = null;
 };
