@@ -22,8 +22,20 @@
             font-size: 36px;
         }
 
+        #gif-container {
+            margin-top: 20px;
+            border: 10px solid #4682B4; /* Larger border for a bigger frame */
+            border-radius: 15px; /* Optional: Add border-radius for rounded corners */
+            overflow: hidden; /* Hide overflow if the image is larger than the container */
+        }
+
+        #gif {
+            width: 100%; /* Make the image fill the container */
+            height: 100%; /* Maintain aspect ratio */
+        }
+
         #icons {
-            margin-top: 50px;
+            margin-top: 20px;
             display: flex;
             justify-content: center;
             gap: 5px;
@@ -59,11 +71,13 @@
 
     <div id="icons">
         <!-- Display one GIF at a time -->
-        <img id="gif" src="icon1.gif">
+        <div id="gif-container">
+            <img id="gif" src="icon1.gif">
+        </div>
     </div>
     
     <div id="buttons">
-    <button class="button">Mint - TBD</button>
+        <button class="button">Mint - TBD</button>
     </div>
 
     <script>
