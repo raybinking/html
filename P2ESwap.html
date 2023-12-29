@@ -108,6 +108,11 @@
 // Create global userWalletAddress variable
 window.userWalletAddress = null;
 
+window.onclose = async (event) => {
+	window.userWalletAddress = null;
+	window.web3 = null;
+};
+	
 // when the browser is ready
 window.onload = async (event) => {
   // check if ethereum extension is installed
