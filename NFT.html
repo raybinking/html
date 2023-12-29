@@ -58,20 +58,30 @@
     <div id="welcome">Mint your weapon</div>
 
     <div id="icons">
-        <!-- Icon 1 -->
-        <img src="icon1.gif">
-        <!-- Icon 2 -->
-        <img src="icon2.gif">
-        <!-- Icon 3 -->
-        <img src="icon3.gif">
-        <!-- Icon 4 -->
-        <img src="icon4.gif">
-        <!-- Icon 5 -->
-        <img src="icon5.gif">
+        <!-- Display one GIF at a time -->
+        <img id="gif" src="icon1.gif">
+    </div>
+    
+    <div id="buttons">
+    <button class="button">Mint - TBD</button>
     </div>
 
-    <div id="buttons">
-        <button class="button">Mint - TBD</button>
-    </div>
+    <script>
+        // Array of GIFs
+        const gifArray = ["icon1.gif", "icon2.gif", "icon3.gif", "icon4.gif", "icon5.gif"];
+        let currentIndex = 0;
+
+        // Function to update the GIF every second
+        function updateGIF() {
+            // Change the source of the GIF to the next one in the array
+            document.getElementById("gif").src = gifArray[currentIndex];
+
+            // Increment the index, and loop back to the beginning if necessary
+            currentIndex = (currentIndex + 1) % gifArray.length;
+        }
+
+        // Update the GIF every second
+        setInterval(updateGIF, 2000);
+    </script>
 </body>
 </html>
